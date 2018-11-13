@@ -1,22 +1,42 @@
-let a = [4, 5, 6]
-let b = [6, 6, 6]
-let c = [5, 5, 5]
-let d = [4, 4, 4]
-let e = [3, 3, 3]
-let f = [2, 2, 2]
-let g = [1, 1, 1]
+const ceelo = {
+    roll: function () {
+        hand = []
+        
+        for (let diceRoll = 0; diceRoll < 3; diceRoll++){
+            let dice = Math.floor((Math.random() * 6) + 1)
+            hand.push(dice)
+        }
+        return console.log(hand.sort())
+        
+    } 
+}
 
 
-let roll = () => {
+
+const fourFiveSixCheck = (hand) => {
+    let check = [4, 5, 6,]
+    if( check === hand) {
+        console.log('FOUR FIVE SIX! AUTOMATIC')
+    }
+}
+
+roll = () => {
     hand = []
-    let diceRoll
-    for (diceRoll = 0; diceRoll < 3; diceRoll++){
+    
+    for (let diceRoll = 0; diceRoll < 3; diceRoll++){
         let dice = Math.floor((Math.random() * 6) + 1)
         hand.push(dice)
     }
+    fourFiveSixCheck(hand)
     hand.toString()
     hand.sort()
     return console.log(hand.join(' '))
+    
 }
 
-roll()
+
+
+
+
+
+ceelo.roll()

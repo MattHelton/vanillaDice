@@ -1,8 +1,11 @@
 const ceelo = {
     fourFiveSixCheck: function (hand) {
-        let check = [4, 5, 6,]
-        if( check === hand) {
+        let fourFiveSix = [4, 5, 6,]
+        let oneTwoThreww = [1, 2, 3]
+        if( fourFiveSix === hand) {
             console.log('AUTOMATIC WIN!!')
+        } else if(oneTwoThree === hand) {
+            console.log('You lose!')
         } else {
             console.log('Roll again!')
         }

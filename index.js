@@ -17,6 +17,11 @@ function playGame() {
         console.log(`Your score is ${d2}`)
     } else if (d2 === d3 && d1 !== d2) {
         console.log(`Your score is ${d1}`)
+    } else if (d1 + d2 + d3 === 6 ) {
+        console.log('One Two Three, you lose!')
+
+    } else if (d1 + d2 + d3 === 15 && d1 + d2 !== 10) {
+        console.log('FOUR FIVE SIX! YOU WIN!')
     } else {
         console.log('Roll again!')
     }

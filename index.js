@@ -4,35 +4,41 @@ function playGame() {
     } 
     let p1 = {
         name: 'Player One',
+        score: 0,
         getScore: getScore
     }
     let p2 = {
         name: 'Player Two',
+        score: 0,
         getScore: getScore
     }
     function playRound() {
         let playerOneScore = p1.getScore()
         let playerTwoScore = p2.getScore()
-        if(playerOneScore == playerTwoScore){
-            console.log(`It's a tie!`)
+        
+        if(playerOneScore < playerTwoScore){
+            console.log(`Player Two wins!`)
         }else if(playerOneScore > playerTwoScore) {
             console.log(`Player One wins!`)
-        }else{
-            console.log(`Player Two wins!`)
+        }else if(playerOneScore === playerTwoScore) {
+            console.log(`It's a tie!`)
+            playRound()
+        } else {
+            console.log(`This shit broke as fuck.`)
         }
-        }
+    }
     
     function getScore() {
         let d1 = roll()
         let d2 = roll()
         let d3 = roll() 
-        console.log(d1, d2, d3)
+        console.log(`${d1} ${d2} ${d3}`)
         if(d1 === d2 && d2 === d3) {
             console.log(`${this.name} score is ${d1}${d1}${d1}!`)
             return d1 * 111
         }else if(d1 === d2 && d2 !== d3) {
             console.log(`${this.name} score is ${d3}`)
-            return d3
+            return d3 
         }else if(d1 === d3 && d2 !== d1) {
             console.log(`${this.name} score is ${d2}`)
             return d2
@@ -48,7 +54,7 @@ function playGame() {
             return 1000
         }else{
             console.log('Roll again!')
-            getScore()
+            this.getScore()
         }
     }  
     playRound()

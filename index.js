@@ -1,4 +1,4 @@
-function playGame() {
+function playCeelo() {
    function roll() {
         return Math.floor((Math.random() * 6)+ 1)
     } 
@@ -59,4 +59,20 @@ function playGame() {
     }  
     playRound()
 }
-playGame()
+// playCeelo()
+
+function playThrees() {
+    function roll() {
+        return Math.floor((Math.random() * 6)+ 1)
+    } 
+    function playRound() {
+        d1 = roll()
+        d2 = roll()
+        d3 = roll()
+        d4 = roll()
+        d5 = roll()
+        console.log(d1, d2, d3, d4, d5)
+    }
+    playRound()
+}
+playThrees()

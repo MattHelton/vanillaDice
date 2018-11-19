@@ -62,8 +62,10 @@ function playCeelo() {
 // playCeelo()
 
 function playThrees() {
-    function roll() {
-        return Math.floor((Math.random() * 6)+ 1)
+    let hand = []
+    function roll(hand) {
+        let r = Math.floor((Math.random() * 6)+ 1)
+        return hand[r]
     } 
     function playRound() {
         d1 = roll()
@@ -72,6 +74,12 @@ function playThrees() {
         d4 = roll()
         d5 = roll()
         console.log(d1, d2, d3, d4, d5)
+       for(i = 0; i <= hand.length; i++) {
+           if(hand[i] === 3) {
+               
+           }
+       }
+        console.log(hand)
     }
     playRound()
 }

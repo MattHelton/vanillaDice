@@ -12,21 +12,6 @@ function playCeelo() {
         score: 0,
         getScore: getScore
     }
-    function playRound() {
-        let playerOneScore = p1.getScore()
-        let playerTwoScore = p2.getScore()
-        
-        if(playerOneScore < playerTwoScore){
-            console.log(`Player Two wins!`)
-        }else if(playerOneScore > playerTwoScore) {
-            console.log(`Player One wins!`)
-        }else if(playerOneScore === playerTwoScore) {
-            console.log(`It's a tie!`)
-            playRound()
-        } else {
-            console.log(`This shit broke as fuck.`)
-        }
-    }
     
     function getScore() {
         let d1 = roll()
@@ -56,30 +41,42 @@ function playCeelo() {
             console.log('Roll again!')
             this.getScore()
         }
+    }
+    function playRound() {
+        let playerOneScore = p1.getScore()
+        let playerTwoScore = p2.getScore()
+        
+        if(playerOneScore < playerTwoScore){
+            console.log(`Player Two wins!`)
+        }else if(playerOneScore > playerTwoScore) {
+            console.log(`Player One wins!`)
+        }else if(playerOneScore === playerTwoScore) {
+            console.log(`It's a tie!`)
+            playRound()
+        } else {
+            console.log(`This shit broke as fuck.`)
+        }
     }  
     playRound()
 }
 // playCeelo()
 
 function playThrees() {
-    let hand = []
-    function roll(hand) {
-        let r = Math.floor((Math.random() * 6)+ 1)
-        return hand[r]
+    function roll() {
+        return Math.floor((Math.random() * 6)+ 1)
+        
     } 
     function playRound() {
+        hand =[]
         d1 = roll()
         d2 = roll()
         d3 = roll()
         d4 = roll()
         d5 = roll()
-        console.log(d1, d2, d3, d4, d5)
-       for(i = 0; i <= hand.length; i++) {
-           if(hand[i] === 3) {
-               
-           }
-       }
+        hand.push(d1, d2, d3, d4, d5)
         console.log(hand)
+        console.log(d1, d2, d3, d4, d5)
+        
     }
     playRound()
 }

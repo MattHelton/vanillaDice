@@ -76,7 +76,9 @@ function playThrees() {
         hand.push(d1, d2, d3, d4, d5)
         console.log(hand)
         console.log(d1, d2, d3, d4, d5)
-        
+        let hold = hand.filter(dice => dice == 3)
+        console.log(hand)
+        console.log(hold)
     }
     playRound()
 }

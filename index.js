@@ -66,6 +66,28 @@ function playThrees() {
         return Math.floor((Math.random() * 6)+ 1)
         
     } 
+    function results(...dice) {
+        let div = document.createElement('div')
+        let result = document.createTextNode(dice)
+        div.appendChild(result)
+        
+        let currentDiv = document.getElementById('results')
+        document.body.insertBefore(div, currentDiv)
+        
+    }
+
+    function addElement () { 
+        // create a new div element 
+        var newDiv = document.createElement("div"); 
+        // and give it some content 
+        var newContent = document.createTextNode("Hi there and greetings!"); 
+        // add the text node to the newly created div
+        newDiv.appendChild(newContent);  
+      
+        // add the newly created element and its content into the DOM 
+        var currentDiv = document.getElementById("div1"); 
+        document.body.insertBefore(newDiv, currentDiv); 
+      }
     function playRound() {
         hand =[]
         d1 = roll()
@@ -79,6 +101,8 @@ function playThrees() {
         let hold = hand.filter(dice => dice == 3)
         console.log(hand)
         console.log(hold)
+        let result = hand.join(' ')
+       results(result)
     }
     playRound()
 }

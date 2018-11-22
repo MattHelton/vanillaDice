@@ -2,6 +2,15 @@ function playCeelo() {
    function roll() {
         return Math.floor((Math.random() * 6)+ 1)
     } 
+    function results(...dice) {
+        let div = document.createElement('div')
+        let result = document.createTextNode(dice)
+        // div.addClassList('dice')
+        div.appendChild(result)
+        
+        let currentDiv = document.getElementById('results')
+        document.body.insertBefore(div, currentDiv)    
+    }
     let p1 = {
         name: 'Player One',
         score: 0,
@@ -14,9 +23,14 @@ function playCeelo() {
     }
     
     function getScore() {
+        let hand = []
         let d1 = roll()
         let d2 = roll()
         let d3 = roll() 
+        hand.push(d1, d2, d3)
+        for(let i = 0; i < hand.length; i++) {
+            results(hand[i])
+        }
         console.log(`${d1} ${d2} ${d3}`)
         if(d1 === d2 && d2 === d3) {
             console.log(`${this.name} score is ${d1}${d1}${d1}!`)
@@ -85,7 +99,7 @@ function playThrees() {
         for(let i = 0; i < hand.length; i++) {
             results(hand[i])
         }
-        let result = hand.join(' ')
+
     }
     playRound()
 }

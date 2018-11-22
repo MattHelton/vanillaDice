@@ -59,7 +59,6 @@ function playCeelo() {
     }  
     playRound()
 }
-// playCeelo()
 
 function playThrees() {
     function roll() {
@@ -69,25 +68,12 @@ function playThrees() {
     function results(...dice) {
         let div = document.createElement('div')
         let result = document.createTextNode(dice)
+        // div.addClassList('dice')
         div.appendChild(result)
         
         let currentDiv = document.getElementById('results')
-        document.body.insertBefore(div, currentDiv)
-        
+        document.body.insertBefore(div, currentDiv)    
     }
-
-    function addElement () { 
-        // create a new div element 
-        var newDiv = document.createElement("div"); 
-        // and give it some content 
-        var newContent = document.createTextNode("Hi there and greetings!"); 
-        // add the text node to the newly created div
-        newDiv.appendChild(newContent);  
-      
-        // add the newly created element and its content into the DOM 
-        var currentDiv = document.getElementById("div1"); 
-        document.body.insertBefore(newDiv, currentDiv); 
-      }
     function playRound() {
         hand =[]
         d1 = roll()
@@ -96,14 +82,10 @@ function playThrees() {
         d4 = roll()
         d5 = roll()
         hand.push(d1, d2, d3, d4, d5)
-        console.log(hand)
-        console.log(d1, d2, d3, d4, d5)
-        let hold = hand.filter(dice => dice == 3)
-        console.log(hand)
-        console.log(hold)
+        for(let i = 0; i < hand.length; i++) {
+            results(hand[i])
+        }
         let result = hand.join(' ')
-       results(result)
     }
     playRound()
 }
-playThrees()

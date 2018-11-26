@@ -1,7 +1,3 @@
-body {
-    
-}
-
 .dice {
     display: inline-block
 }
@@ -10,14 +6,14 @@ div {
     margin: 1em;
 }
 
-.game{
+/* .game{
     display: none
-}
+} */
 
 #threes {
     display: none
 }
-
+/* 
 #ceelo {
     display: none
-}
+} */

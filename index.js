@@ -28,9 +28,21 @@ function playCeelo () {
     let d2 = roll()
     let d3 = roll()
     hand.push(d1, d2, d3)
-    for (let i = 0; i < hand.length; i++) {
-      results(hand[i])
+    function results (...dice) {
+      let div = document.createElement('div')
+      let result = document.createTextNode(dice)
+      // div.addClassList('dice')
+      div.className = 'dice'
+      div.appendChild(result)
+
+      let currentDiv = document.getElementById('results')
+      document.body.insertBefore(div, currentDiv)
     }
+    let result = hand.join(' ')
+    results(result)
+    // for (let i = 0; i < hand.length; i++) {
+    //   results(hand[i])
+    // }
     console.log(`${d1} ${d2} ${d3}`)
     if (d1 === d2 && d2 === d3) {
       console.log(`${this.name} score is ${d1}${d1}${d1}!`)

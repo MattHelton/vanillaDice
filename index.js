@@ -87,13 +87,19 @@ function playThrees () {
     let currentDiv = document.getElementById('results')
     document.body.insertBefore(div, currentDiv)
   }
-  function createHoldArray (array, dice) {
-    array.push(dice)
-  }
 
+  function holdResults (...dice) {
+    let div = document.createElement('div')
+    let result = document.createTextNode(dice)
+    // div.addClassList('dice')
+    div.className = 'hold'
+    div.appendChild(result)
+
+    let currentDiv = document.getElementById('dice')
+    document.body.insertBefore(div, currentDiv)
+  }
   function playRound () {
     let hand = []
-    let hold =[]
     let d1 = roll()
     let d2 = roll()
     let d3 = roll()
@@ -103,12 +109,27 @@ function playThrees () {
     for (let i = 0; i < hand.length; i++) {
       results(hand[i])
     }
-    document.addEventListener('click', function (e, ...dice) {
+    document.addEventListener('click', function (e, dice) {
+      let hold = []
       if (e.target.matches('.dice')) {
         hold.push(dice)
-        console.log(hold)
+        for (let i = 0; i < hold.length; i++) {
+          holdResults(hold[i])
+          console.log(hold)
+        }
       }
     })
+    function show (elem) {
+      elem.classList.add('is-visible')
+    }
+
+    function hide (elem) {
+      elem.classList.remove('is-visible')
+    }
+
+    function toggle (elem) {
+      elem.classList.toggle('is-visible')
+    }
   }
   playRound()
 }

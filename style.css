@@ -9,3 +9,15 @@ body {
 div {
     margin: 1em;
 }
+
+.game{
+    display: none
+}
+
+#threes {
+    display: none
+}
+
+#ceelo {
+    display: none
+}

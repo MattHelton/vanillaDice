@@ -84,6 +84,12 @@ function playCeelo () {
   }
   playRound()
 }
+// function playCeelo () {
+//   document.getElementById('playCeelo').addEventListener('click', ceelo())
+// }
+function toggleCeelo () {
+  document.getElementById('ceelo').classList.toggle("is-visible");
+}
 
 function playThrees () {
   function roll () {
@@ -145,3 +151,7 @@ function playThrees () {
   }
   playRound()
 }
+
+// function playThrees () {
+//   document.getElementById('playThrees').addEventListener('click', threes())
+// }

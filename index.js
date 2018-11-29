@@ -2,6 +2,7 @@ function playCeelo () {
   function roll () {
     return Math.floor((Math.random() * 6) + 1)
   }
+  // function to render rolls to DOM
   function results (...dice) {
     let div = document.createElement('div')
     let result = document.createTextNode(dice)
@@ -92,15 +93,30 @@ function toggleCeelo () {
 }
 
 function playThrees () {
+  let hold = []
+  let hand = []
   function roll () {
     return Math.floor((Math.random() * 6) + 1)
   }
+
   function results (...dice) {
     let div = document.createElement('div')
     let result = document.createTextNode(dice)
     // div.addClassList('dice')
-    div.className = 'dice'
+    div.className = 'potentialDice'
     div.appendChild(result)
+
+    div.addEventListener('click', function listener (e) {
+      const d = parseInt(e.target.innerHTML, 10)
+      hold.push(d)
+
+      div.removeEventListener('click', listener, true)
+
+      hand.splice(hand.indexOf(hand.find(num => num === d)), 1)
+      console.log('hand: ' + hand)
+      console.log('hold: ' + hold)
+      document.getElementById('threes').disabled = false
+    })
 
     let currentDiv = document.getElementById('results')
     document.body.insertBefore(div, currentDiv)
@@ -117,26 +133,22 @@ function playThrees () {
     document.body.insertBefore(div, currentDiv)
   }
   function playRound () {
-    let hand = []
-    let d1 = roll()
-    let d2 = roll()
-    let d3 = roll()
-    let d4 = roll()
-    let d5 = roll()
-    hand.push(d1, d2, d3, d4, d5)
+    // let d1 = roll()
+    // let d2 = roll()
+    // let d3 = roll()
+    // let d4 = roll()
+    // let d5 = roll()
+    // hand.push(d1, d2, d3, d4, d5)
+    let times = 5 - hold.length
+    for (let i = 0; i < times; i++) {
+      hand.push(roll())
+    }
     for (let i = 0; i < hand.length; i++) {
       results(hand[i])
     }
-    document.addEventListener('click', function (e, dice) {
-      let hold = []
-      if (e.target.matches('.dice')) {
-        hold.push(dice)
-        for (let i = 0; i < hold.length; i++) {
-          holdResults(hold[i])
-          console.log(hold)
-        }
-      }
-    })
+    
+    document.getElementById("threes").disabled = true;
+
     function show (elem) {
       elem.classList.add('is-visible')
     }
@@ -155,3 +167,4 @@ function playThrees () {
 // function playThrees () {
 //   document.getElementById('playThrees').addEventListener('click', threes())
 // }
+ 

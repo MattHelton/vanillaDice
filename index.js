@@ -116,7 +116,7 @@ function playThrees () {
       console.log('hand: ' + hand)
       console.log('hold: ' + hold)
       document.getElementById('threes').disabled = false
-    })
+    }, true)
 
     let currentDiv = document.getElementById('results')
     document.body.insertBefore(div, currentDiv)

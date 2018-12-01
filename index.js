@@ -129,7 +129,7 @@ function playThrees () {
     let currentDiv = document.getElementById('dice')
     document.body.insertBefore(div, currentDiv)
     if (hold.length === 5) {
-      div.appendChild(result)
+      hold.querySelectorAll('3')
       let sum = hold.reduce((a, b) => a + b, 0)
       let score = document.createTextNode(`
       Your score is ${sum}`)
@@ -169,6 +169,7 @@ function playThrees () {
       results(hand[i])
     }
   }
+  
   let threesReroll = document.querySelector('.rr')
   threesReroll.addEventListener('click', function () {
     reroll()
@@ -181,6 +182,7 @@ let rollCeelo = document.getElementById('ceelo')
 ceeloButton.addEventListener('click', function () {
   console.log(rollCeelo)
   rollCeelo.classList.toggle('hidden')
+  threesButton.classList.toggle('hidden')
 })
 
 let threesButton = document.getElementById('threesButton')
@@ -188,6 +190,7 @@ let rollThrees = document.getElementById('threes')
 
 threesButton.addEventListener('click', function () {
   rollThrees.classList.toggle('hidden')
+  ceeloButton.classList.toggle('hidden')
 })
 
 rollCeelo.addEventListener('click', function () {

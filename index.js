@@ -36,7 +36,7 @@ function playCeelo () {
       div.className = 'dice'
       div.appendChild(result)
 
-      let currentDiv = document.getElementById('results')
+      let currentDiv = document.getElementById('ceeloResults')
       document.body.insertBefore(div, currentDiv)
     }
     let result = hand.join(' ')
@@ -85,14 +85,9 @@ function playCeelo () {
   }
   playRound()
 }
-// function playCeelo () {
-//   document.getElementById('playCeelo').addEventListener('click', ceelo())
-// }
-function toggleCeelo () {
-  document.getElementById('ceelo').classList.toggle("is-visible");
-}
 
 function playThrees () {
+
   let hold = []
   let hand = []
   function roll () {
@@ -102,6 +97,7 @@ function playThrees () {
   function results (...dice) {
     let div = document.createElement('div')
     let result = document.createTextNode(dice)
+
     // div.addClassList('dice')
     div.className = 'potentialDice'
     div.appendChild(result)
@@ -116,6 +112,7 @@ function playThrees () {
       console.log('hand: ' + hand)
       console.log('hold: ' + hold)
       document.getElementById('threes').disabled = false
+      div.classList.add('hidden')
     }, true)
 
     let currentDiv = document.getElementById('results')
@@ -146,20 +143,8 @@ function playThrees () {
     for (let i = 0; i < hand.length; i++) {
       results(hand[i])
     }
-    
-    document.getElementById("threes").disabled = true;
 
-    function show (elem) {
-      elem.classList.add('is-visible')
-    }
-
-    function hide (elem) {
-      elem.classList.remove('is-visible')
-    }
-
-    function toggle (elem) {
-      elem.classList.toggle('is-visible')
-    }
+    document.getElementById('threes').disabled = true
   }
   playRound()
 }
@@ -167,7 +152,7 @@ function playThrees () {
 let ceeloButton = document.getElementById('ceeloButton')
 let rollCeelo = document.getElementById('ceelo')
 
-ceeloButton.addEventListener('click', function() {
+ceeloButton.addEventListener('click', function () {
   console.log(rollCeelo)
   rollCeelo.classList.toggle('hidden')
 })
@@ -175,7 +160,7 @@ ceeloButton.addEventListener('click', function() {
 let threesButton = document.getElementById('threesButton')
 let rollThrees = document.getElementById('threes')
 
-threesButton.addEventListener('click', function() {
+threesButton.addEventListener('click', function () {
   rollThrees.classList.toggle('hidden')
 })
 

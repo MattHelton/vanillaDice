@@ -1,13 +1,23 @@
 .header {
     text-align: center
+
+
 }
 
 .hidden {
     display: none !important
 }
 
-.dice {
+.dice, .potentialDice {
     display: inline-block
+}
+
+.potentialDice {
+    text-align: right
+}
+
+.hold {
+    text-align: right
 }
 
 div {
@@ -28,4 +38,11 @@ div {
 
 .is-visible {
     display: none
+}
+#c {
+    text-align: left
+}
+
+#t {
+    text-align: right
 }

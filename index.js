@@ -129,7 +129,6 @@ function playThrees () {
     let currentDiv = document.getElementById('dice')
     document.body.insertBefore(div, currentDiv)
     if (hold.length === 5) {
-      hold.querySelectorAll('3')
       let sum = hold.reduce((a, b) => a + b, 0)
       let score = document.createTextNode(`
       Your score is ${sum}`)

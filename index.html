@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="index.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Dice Game</title>
 </head>
 <body>
     <h1>Vanilla Dice</h1>
     <h2>Choose a game</h2>
-    <button class="choice">Ceelo</button>
-    <button class="choice">Threes</button>
+    <button class="choice" id="ceeloButton">Ceelo</button>
+    <button onClick="showThrees()" class="choice" id="threesButton">Threes</button>
     <div></div>
-    <button onClick="playThrees()" class="game" id="threes">Roll for Threes!</button>
+    <button onClick="playThrees()" class="game hidden" id="threes">Roll for Threes!</button>
     <div class="results"></div>
-    <button onClick="playCeelo()" id="ceelo">Roll for Ceelo!</button>
+    <button onClick="playCeelo()" class="game hidden" id="ceelo">Roll for Ceelo!</button>
 </body>
+<script src="index.js"></script>
 </html>

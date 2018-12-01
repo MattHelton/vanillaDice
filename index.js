@@ -164,7 +164,17 @@ function playThrees () {
   playRound()
 }
 
-// function playThrees () {
-//   document.getElementById('playThrees').addEventListener('click', threes())
-// }
- 
+let ceeloButton = document.getElementById('ceeloButton')
+let rollCeelo = document.getElementById('ceelo')
+
+ceeloButton.addEventListener('click', function() {
+  console.log(rollCeelo)
+  rollCeelo.classList.toggle('hidden')
+})
+
+let threesButton = document.getElementById('threesButton')
+let rollThrees = document.getElementById('threes')
+
+threesButton.addEventListener('click', function() {
+  rollThrees.classList.toggle('hidden')
+})

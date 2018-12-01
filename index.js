@@ -178,3 +178,11 @@ let rollThrees = document.getElementById('threes')
 threesButton.addEventListener('click', function() {
   rollThrees.classList.toggle('hidden')
 })
+
+rollCeelo.addEventListener('click', function () {
+  playCeelo()
+})
+
+rollThrees.addEventListener('click', function () {
+  playThrees()
+})

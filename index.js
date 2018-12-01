@@ -87,7 +87,6 @@ function playCeelo () {
 }
 
 function playThrees () {
-
   let hold = []
   let hand = []
   function roll () {
@@ -130,23 +129,22 @@ function playThrees () {
     let currentDiv = document.getElementById('dice')
     document.body.insertBefore(div, currentDiv)
     if (hold.length === 5) {
+      div.appendChild(result)
       let sum = hold.reduce((a, b) => a + b, 0)
       let score = document.createTextNode(`
       Your score is ${sum}`)
+      div.className = 'score'
       div.appendChild(score)
     }
   }
   function firstRoll () {
-    // let d1 = roll()
-    // let d2 = roll()
-    // let d3 = roll()
-    // let d4 = roll()
-    // let d5 = roll()
-    // hand.push(d1, d2, d3, d4, d5)
-    let times = 5 - hold.length
-    for (let i = 0; i < times; i++) {
-      hand.push(roll())
-    }
+    let d1 = roll()
+    let d2 = roll()
+    let d3 = roll()
+    let d4 = roll()
+    let d5 = roll()
+    hand.push(d1, d2, d3, d4, d5)
+   
     for (let i = 0; i < hand.length; i++) {
       results(hand[i])
     }
@@ -154,6 +152,27 @@ function playThrees () {
     document.getElementById('threes').classList.add('hidden')
   }
   firstRoll()
+
+  function reroll () {
+    hand = []
+    let pd = document.querySelectorAll('.potentialDice')
+    for (let i = 0; i < pd.length; i++) {
+      console.log(pd[i])
+      pd[i].classList.add('hidden')
+    }
+    let times = 5 - hold.length
+    console.log(times)
+    for (let i = 0; i < times; i++) {
+      hand.push(roll())
+    }
+    for (let i = 0; i < hand.length; i++) {
+      results(hand[i])
+    }
+  }
+  let threesReroll = document.querySelector('.rr')
+  threesReroll.addEventListener('click', function () {
+    reroll()
+  })
 }
 
 let ceeloButton = document.getElementById('ceeloButton')
@@ -177,7 +196,4 @@ rollCeelo.addEventListener('click', function () {
 
 rollThrees.addEventListener('click', function () {
   playThrees()
-//   let hiddenDice = document.getElementById('potentialDice')
-//   console.log(hiddenDice)
-//   hiddenDice.classList.add('hidden')
 })

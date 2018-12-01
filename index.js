@@ -111,7 +111,7 @@ function playThrees () {
       hand.splice(hand.indexOf(hand.find(num => num === d)), 1)
       console.log('hand: ' + hand)
       console.log('hold: ' + hold)
-      document.getElementById('threes').disabled = false
+      document.querySelector('.rr').classList.remove('hidden')
       div.classList.add('hidden')
       holdResults(d)
     }, true)
@@ -129,8 +129,14 @@ function playThrees () {
 
     let currentDiv = document.getElementById('dice')
     document.body.insertBefore(div, currentDiv)
+    if (hold.length === 5) {
+      let sum = hold.reduce((a, b) => a + b, 0)
+      let score = document.createTextNode(`
+      Your score is ${sum}`)
+      div.appendChild(score)
+    }
   }
-  function playRound () {
+  function firstRoll () {
     // let d1 = roll()
     // let d2 = roll()
     // let d3 = roll()
@@ -145,9 +151,9 @@ function playThrees () {
       results(hand[i])
     }
 
-    document.getElementById('threes').disabled = true
+    document.getElementById('threes').classList.add('hidden')
   }
-  playRound()
+  firstRoll()
 }
 
 let ceeloButton = document.getElementById('ceeloButton')
@@ -171,4 +177,7 @@ rollCeelo.addEventListener('click', function () {
 
 rollThrees.addEventListener('click', function () {
   playThrees()
+//   let hiddenDice = document.getElementById('potentialDice')
+//   console.log(hiddenDice)
+//   hiddenDice.classList.add('hidden')
 })

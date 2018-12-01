@@ -16,7 +16,9 @@
     text-align: right
 }
 
-
+.hold {
+    text-emphasis: 25
+}
 
 div {
     margin: 1em;

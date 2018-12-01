@@ -113,6 +113,7 @@ function playThrees () {
       console.log('hold: ' + hold)
       document.getElementById('threes').disabled = false
       div.classList.add('hidden')
+      holdResults(d)
     }, true)
 
     let currentDiv = document.getElementById('results')

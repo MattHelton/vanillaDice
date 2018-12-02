@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: #064bed;
+    background-color: #9bc1bc;
 }
 
 #header {
@@ -11,8 +11,8 @@ body {
     padding: 0em;
     border: 0em;
     text-align: center;
-    background-color: #f53206; 
-    color: #064bed;
+    background-color: #f4f1bb; 
+    color: #9bc1bc;
     width: 100vw
 }
 /*  */
@@ -21,9 +21,9 @@ body {
 }
 
 .button {
-    background-color: #f53206;
+    background-color: #ed6a5a;
     border: none;
-    color: #064bed;
+    color: #9bc1bc;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -75,13 +75,13 @@ div {
 }
 
 .potentialDice {
-    background-color: #2ced06;
+    background-color: #ed6a5a;
     padding: .5em;
-    color: #f53206
+    color: #f4f1bb
 }
 
 .hold {
     padding: 1em;
-    color: #2ced06;
-    background-color: #f53206
+    color: #ed6a5a;
+    background-color: #f4f1bb
 }

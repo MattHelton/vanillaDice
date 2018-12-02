@@ -89,6 +89,7 @@ function playCeelo () {
 function playThrees () {
   let hold = []
   let hand = []
+
   function roll () {
     return Math.floor((Math.random() * 6) + 1)
   }
@@ -108,8 +109,6 @@ function playThrees () {
       div.removeEventListener('click', listener, true)
 
       hand.splice(hand.indexOf(hand.find(num => num === d)), 1)
-      console.log('hand: ' + hand)
-      console.log('hold: ' + hold)
       document.querySelector('.rr').classList.remove('hidden')
       div.classList.add('hidden')
       holdResults(d)
@@ -129,6 +128,13 @@ function playThrees () {
     let currentDiv = document.getElementById('dice')
     document.body.insertBefore(div, currentDiv)
     if (hold.length === 5) {
+      div.className = 'hold'
+      div.appendChild(result)
+      let finalDice = document.querySelectorAll('.hold')
+      for (i = 0; i < finalDice.length; i++) {
+        finalDice[i].classList.add('hidden')
+      }
+
       let sum = hold.reduce((a, b) => a + b, 0)
       let score = document.createTextNode(`
       Your score is ${sum}`)
@@ -143,7 +149,7 @@ function playThrees () {
     let d4 = roll()
     let d5 = roll()
     hand.push(d1, d2, d3, d4, d5)
-   
+
     for (let i = 0; i < hand.length; i++) {
       results(hand[i])
     }
@@ -168,7 +174,7 @@ function playThrees () {
       results(hand[i])
     }
   }
-  
+
   let threesReroll = document.querySelector('.rr')
   threesReroll.addEventListener('click', function () {
     reroll()
@@ -186,7 +192,7 @@ ceeloButton.addEventListener('click', function () {
 
 let threesButton = document.getElementById('threesButton')
 let rollThrees = document.getElementById('threes')
-
+let reset = document.getElementById('reset')
 threesButton.addEventListener('click', function () {
   rollThrees.classList.toggle('hidden')
   ceeloButton.classList.toggle('hidden')
@@ -198,4 +204,8 @@ rollCeelo.addEventListener('click', function () {
 
 rollThrees.addEventListener('click', function () {
   playThrees()
+})
+
+reset.addEventListener('click', function () {
+  window.location.reload()
 })

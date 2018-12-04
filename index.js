@@ -167,14 +167,13 @@ function playThrees () {
   })
   function printScore () {
     let div = document.createElement('div')
-    let sum = hold.reduce((a, b) => a + b, 0)
+    let scoreArray = hold.filter(num => num !== 3)
+    let sum = scoreArray.reduce((a, b) => a + b, 0)
+    let currentDiv = document.getElementById('score')
     let score = document.createTextNode(`
     Your score is ${sum}`)
     div.className = 'score'
-    
-     
-      div.appendChild(score)
-      let currentDiv = document.getElementById('score')
+    div.appendChild(score)
     document.body.insertBefore(div, currentDiv)
   }
   let scoreButton = document.querySelector('.scoreButton')

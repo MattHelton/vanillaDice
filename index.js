@@ -111,6 +111,7 @@ function playThrees () {
       document.querySelector('.rr').classList.remove('hidden')
       div.classList.add('hidden')
       holdResults(d)
+      // threesReroll.classList.toggle('hidden')
     }, true)
 
     let currentDiv = document.getElementById('results')
@@ -145,8 +146,6 @@ function playThrees () {
 
   function reroll () {
     let hand = []
-    let rerolls = 0
-    rerolls++
     let pd = document.querySelectorAll('.potentialDice')
     for (let i = 0; i < pd.length; i++) {
       pd[i].classList.add('hidden')
@@ -159,11 +158,13 @@ function playThrees () {
     for (let i = 0; i < hand.length; i++) {
       results(hand[i])
     }
+
   }
 
   let threesReroll = document.querySelector('.rr')
   threesReroll.addEventListener('click', function () {
     reroll()
+    threesReroll.classList.toggle('hidden')
   })
   function printScore () {
     let div = document.createElement('div')

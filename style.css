@@ -85,3 +85,8 @@ div {
     color: #ed6a5a;
     background-color: #f4f1bb
 }
+
+.score {
+    color: #f4f1bb;
+    font-size: 5em
+}

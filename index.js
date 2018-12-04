@@ -98,7 +98,6 @@ function playThrees () {
     let div = document.createElement('div')
     let result = document.createTextNode(dice)
 
-    // div.addClassList('dice')
     div.className = 'potentialDice'
     div.appendChild(result)
 
@@ -126,21 +125,7 @@ function playThrees () {
     div.appendChild(result)
 
     let currentDiv = document.getElementById('dice')
-    document.body.insertBefore(div, currentDiv)
-    if (hold.length === 5) {
-      div.className = 'hold'
-      div.appendChild(result)
-      let finalDice = document.querySelectorAll('.hold')
-      for (i = 0; i < finalDice.length; i++) {
-        finalDice[i].classList.add('hidden')
-      }
-
-      let sum = hold.reduce((a, b) => a + b, 0)
-      let score = document.createTextNode(`
-      Your score is ${sum}`)
-      div.className = 'score'
-      div.appendChild(score)
-    }
+    document.body.insertBefore(div, currentDiv)   
   }
   function firstRoll () {
     let d1 = roll()
@@ -159,10 +144,11 @@ function playThrees () {
   firstRoll()
 
   function reroll () {
-    hand = []
+    let hand = []
+    let rerolls = 0
+    rerolls++
     let pd = document.querySelectorAll('.potentialDice')
     for (let i = 0; i < pd.length; i++) {
-      console.log(pd[i])
       pd[i].classList.add('hidden')
     }
     let times = 5 - hold.length
@@ -179,6 +165,21 @@ function playThrees () {
   threesReroll.addEventListener('click', function () {
     reroll()
   })
+  function printScore () {
+    let div = document.createElement('div')
+    let sum = hold.reduce((a, b) => a + b, 0)
+    let score = document.createTextNode(`
+    Your score is ${sum}`)
+    div.className = 'score'
+    
+     
+      div.appendChild(score)
+      let currentDiv = document.getElementById('score')
+    document.body.insertBefore(div, currentDiv)
+  }
+  let scoreButton = document.querySelector('.scoreButton')
+  scoreButton.addEventListener('click', printScore)
+  scoreButton.classList.remove('hidden')
 }
 
 let ceeloButton = document.getElementById('ceeloButton')

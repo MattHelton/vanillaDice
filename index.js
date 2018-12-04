@@ -167,15 +167,30 @@ function playThrees () {
     threesReroll.classList.toggle('hidden')
   })
   function printScore () {
-    let div = document.createElement('div')
-    let scoreArray = hold.filter(num => num !== 3)
-    let sum = scoreArray.reduce((a, b) => a + b, 0)
-    let currentDiv = document.getElementById('score')
-    let score = document.createTextNode(`
+    if (hold.length === 5) {
+      let div = document.createElement('div')
+      let scoreArray = hold.filter(num => num !== 3)
+      let sum = scoreArray.reduce((a, b) => a + b, 0)
+      let currentDiv = document.getElementById('score')
+      let score = document.createTextNode(`
     Your score is ${sum}`)
-    div.className = 'score'
-    div.appendChild(score)
-    document.body.insertBefore(div, currentDiv)
+      div.className = 'score'
+      div.appendChild(score)
+      document.body.insertBefore(div, currentDiv)
+    } else {
+      let div = document.createElement('div')
+      let holdArray = hold.filter(num => num !== 3)
+      let handArray = hand.filter(num => num !== 3)
+      let holdSum = holdArray.reduce((a, b) => a + b, 0)
+      let handSum = handArray.reduce((a, b) => a + b, 0)
+      let sum = holdSum + handSum
+      let score = document.createTextNode(`
+    Your score is ${sum}`)
+    let currentDiv = document.getElementById('score')
+      div.className = 'score'
+      div.appendChild(score)
+      document.body.insertBefore(div, currentDiv)
+    }
   }
   let scoreButton = document.querySelector('.scoreButton')
   scoreButton.addEventListener('click', printScore)

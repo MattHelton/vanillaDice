@@ -77,7 +77,8 @@ div {
 .potentialDice {
     background-color: #ed6a5a;
     padding: .5em;
-    color: #f4f1bb
+    color: #f4f1bb;
+    text-align: center
 }
 
 .hold {
@@ -88,5 +89,6 @@ div {
 
 .score {
     color: #f4f1bb;
-    font-size: 5em
+    font-size: 5em;
+    text-align: center
 }

@@ -141,6 +141,8 @@ function playThrees () {
     }
 
     document.getElementById('threes').classList.add('hidden')
+    document.getElementById('instructions').classList.toggle('hidden')
+    document.getElementById('rolled').classList.toggle('hidden')
   }
   firstRoll()
 

@@ -29,6 +29,7 @@ function playCeelo () {
     let d2 = roll()
     let d3 = roll()
     hand.push(d1, d2, d3)
+
     function results (...dice) {
       let div = document.createElement('div')
       let result = document.createTextNode(dice)
@@ -68,6 +69,7 @@ function playCeelo () {
       this.getScore()
     }
   }
+
   function playRound () {
     let playerOneScore = p1.getScore()
     let playerTwoScore = p2.getScore()
@@ -93,7 +95,6 @@ function playThrees () {
   function roll () {
     return Math.floor((Math.random() * 6) + 1)
   }
-  
 
   // Takes an element and a class name and applies the given class name to the given element
   function assignElementName (el, name) {
@@ -105,10 +106,6 @@ function playThrees () {
     return el.appendChild(diceValue)
   }
 
-  // Creates event listener with a function to add to created html elements
-  function addListener (el) {
-    return el.addEventListener('click', func)
-  }
   // Takes element and current element as arguments and then inserts them into the dom
   function insertElementToDom (el, currentEl) {
     return document.body.insertBefore(el, currentEl)
@@ -124,21 +121,11 @@ function playThrees () {
     return parseInt(e.target.innerHTML, 10)
   }
 
-  // Removes event listener from element
-  function removeListener (el, func, boolean) {
-    el.removeEventListener('click', func, boolean)
-  }
-
   // Removes element from dom
   function removeElement (el) {
-    el.parentNode.removeChild(el);
+    el.parentNode.removeChild(el)
   }
 
-  
-  function holdHandler () {
-
-    removeElement(div)
-  }
   // Creates new div, gives it the class name "potential dice", inserts dice value (using dice argument)
   function renderRolls (...dice) {
     let div = document.createElement('div')
@@ -153,23 +140,19 @@ function playThrees () {
       pushToArray(hold, d)
       removeElement(div)
       holdResults(d)
-      threesReroll.classList.add('hidden')
+      threesReroll.classList.remove('hidden')
     })
-    // htmlToInteger(div)
-    // addListener(div, pushToArray(hold, htmlToInteger(div)))
   }
 
   function holdResults (...dice) {
     let div = document.createElement('div')
     let result = document.createTextNode(dice)
-    // div.addClassList('dice')
-    div.className = 'hold'
-    div.appendChild(result)
-
     let currentDiv = document.getElementById('dice')
-    document.body.insertBefore(div, currentDiv)
-    console.log(hold)
+    assignElementName(div, 'hold')
+    addDiceTextToDiv(div, result)
+    insertElementToDom(div, currentDiv)
   }
+
   function firstRoll () {
     let d1 = roll()
     let d2 = roll()
@@ -181,7 +164,6 @@ function playThrees () {
 
     for (let i = 0; i < hand.length; i++) {
       renderRolls(hand[i])
-      console.log(hand[i])
     }
 
     document.getElementById('threes').classList.add('hidden')
@@ -202,7 +184,7 @@ function playThrees () {
       hand.push(roll())
     }
     for (let i = 0; i < hand.length; i++) {
-      results(hand[i])
+      renderRolls(hand[i])
     }
   }
 
@@ -211,6 +193,7 @@ function playThrees () {
     reroll()
     threesReroll.classList.toggle('hidden')
   })
+
   function printScore () {
     if (hold.length === 5) {
       let div = document.createElement('div')

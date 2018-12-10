@@ -64,7 +64,7 @@ function playThrees () {
     let currentDiv = document.getElementById('results')
     assignElementName(div, 'potentialDice')
     addDiceTextToDiv(div, result)
-    insertElementToDom(div)
+    insertElementToDom(div, currentDiv)
     // htmlToInteger(div)
     // addListener(div, pushToArray)
   }
@@ -94,28 +94,28 @@ function playThrees () {
   //   }, true)
   // }
 
-  // function holdResults (...dice) {
-  //   let div = document.createElement('div')
-  //   let result = document.createTextNode(dice)
-  //   // div.addClassList('dice')
-  //   div.className = 'hold'
-  //   div.appendChild(result)
+  function holdResults (...dice) {
+    let div = document.createElement('div')
+    let result = document.createTextNode(dice)
+    // div.addClassList('dice')
+    div.className = 'hold'
+    div.appendChild(result)
 
-  //   let currentDiv = document.getElementById('dice')
-  //   document.body.insertBefore(div, currentDiv)
-  // }
-  // function firstRoll () {
-  //   let d1 = roll()
-  //   let d2 = roll()
-  //   let d3 = roll()
-  //   let d4 = roll()
-  //   let d5 = roll()
-  //   hand.push(d1, d2, d3, d4, d5)
+    let currentDiv = document.getElementById('dice')
+    document.body.insertBefore(div, currentDiv)
+  }
+  function firstRoll () {
+    let d1 = roll()
+    let d2 = roll()
+    let d3 = roll()
+    let d4 = roll()
+    let d5 = roll()
+    hand.push(d1, d2, d3, d4, d5)
 
-  //   for (let i = 0; i < hand.length; i++) {
-  //     // results(hand[i])
-  //     renderRolls(hand[i])
-  //   }
+    for (let i = 0; i < hand.length; i++) {
+      // results(hand[i])
+      renderRolls(hand[i])
+    }
 
     document.getElementById('threes').classList.add('hidden')
     document.getElementById('instructions').classList.toggle('hidden')

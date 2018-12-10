@@ -154,13 +154,9 @@ function playThrees () {
   }
 
   function firstRoll () {
-    let d1 = roll()
-    let d2 = roll()
-    let d3 = roll()
-    let d4 = roll()
-    let d5 = roll()
-    hand.push(d1, d2, d3, d4, d5)
-    console.log(hand)
+    for (let i = 0; hand.length < 5; i++) {
+      pushToArray(hand, roll())
+    }
 
     for (let i = 0; i < hand.length; i++) {
       renderRolls(hand[i])

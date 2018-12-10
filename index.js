@@ -89,20 +89,64 @@ function playCeelo () {
 function playThrees () {
   let hold = []
   let hand = []
-
+  // Rolls single dice to obtain random 1-6 value
   function roll () {
     return Math.floor((Math.random() * 6) + 1)
   }
 
+  // Creates element from a string naming the element to be created
+  function createDiceElement (elString) {
+    return document.createElement(elString)
+  }
+
+  // Creates text from the value rolled
+  function createDiceText (diceValue) {
+    return document.createTextNode(diceValue)
+  }
+
+  // Takes an element and a class name and applies the given class name to the given element
+  function assignElementName (el, name) {
+    el.className = name
+  }
+
+  // Takes an element and dice value as arguments and adds the text of the dice value to the given element
+  function addDiceTextToDiv (el, diceValue) {
+    return el.appendChild(diceValue)
+  }
+
+  // Creates event listener with a function to add to created html elements
+  function addListener (el, func) {
+    return el.addEventListener('click', func)
+  }
+
+  // Turns HTML text to an integer
+  function htmlToInteger (el) {
+    return parseInt(el.target.innerHTML, 10)
+  }
+
+  // Renders rolls
+  function rollRender () {
+    let dice = roll()
+    let div = createDiceElement('div')
+    createDiceText(dice)
+    assignElementName(div, 'potentialDice')
+    addDiceTextToDiv(div, dice)
+    addListener(div, listener)
+  }
+  // Creates new div, gives it the class name "potential dice", inserts dice value (using dice argument)
   function results (...dice) {
     let div = document.createElement('div')
     let result = document.createTextNode(dice)
 
     div.className = 'potentialDice'
     div.appendChild(result)
-
+    // Adds listener to created div. Listener creates a listener function that turns dice value in div into an integer and then moves it into the hold array,
+    // then removes itself once clicked and creates div with each held dice and prints it to dom
+    // then adds classlist of "hidden" to hide the elements
     div.addEventListener('click', function listener (e) {
       const d = parseInt(e.target.innerHTML, 10)
+      let currentDiv = document.getElementById('results')
+      document.body.insertBefore(div, currentDiv)
       hold.push(d)
 
       div.removeEventListener('click', listener, true)
@@ -113,9 +157,6 @@ function playThrees () {
       holdResults(d)
       // threesReroll.classList.toggle('hidden')
     }, true)
-
-    let currentDiv = document.getElementById('results')
-    document.body.insertBefore(div, currentDiv)
   }
 
   function holdResults (...dice) {
@@ -126,7 +167,7 @@ function playThrees () {
     div.appendChild(result)
 
     let currentDiv = document.getElementById('dice')
-    document.body.insertBefore(div, currentDiv)   
+    document.body.insertBefore(div, currentDiv)
   }
   function firstRoll () {
     let d1 = roll()
@@ -160,7 +201,6 @@ function playThrees () {
     for (let i = 0; i < hand.length; i++) {
       results(hand[i])
     }
-
   }
 
   let threesReroll = document.querySelector('.rr')
@@ -188,7 +228,7 @@ function playThrees () {
       let sum = holdSum + handSum
       let score = document.createTextNode(`
     Your score is ${sum}`)
-    let currentDiv = document.getElementById('score')
+      let currentDiv = document.getElementById('score')
       div.className = 'score'
       div.appendChild(score)
       document.body.insertBefore(div, currentDiv)

@@ -93,16 +93,7 @@ function playThrees () {
   function roll () {
     return Math.floor((Math.random() * 6) + 1)
   }
-
-  // Creates element from a string naming the element to be created
-  function createDiceElement (elString) {
-    return document.createElement(elString)
-  }
-
-  // Creates text from the value rolled
-  function createDiceText (diceValue) {
-    return document.createTextNode(diceValue)
-  }
+  
 
   // Takes an element and a class name and applies the given class name to the given element
   function assignElementName (el, name) {
@@ -115,48 +106,57 @@ function playThrees () {
   }
 
   // Creates event listener with a function to add to created html elements
-  function addListener (el, func) {
+  function addListener (el) {
     return el.addEventListener('click', func)
+  }
+  // Takes element and current element as arguments and then inserts them into the dom
+  function insertElementToDom (el, currentEl) {
+    return document.body.insertBefore(el, currentEl)
+  }
+
+  // Takes in array and function (htmlToInteger) as arguments. Pushes return from function into given array
+  function pushToArray (array, func) {
+    array.push(func)
   }
 
   // Turns HTML text to an integer
-  function htmlToInteger (el) {
-    return parseInt(el.target.innerHTML, 10)
+  function htmlToInteger (e) {
+    return parseInt(e.target.innerHTML, 10)
   }
 
-  // Renders rolls
-  function rollRender () {
-    let dice = roll()
-    let div = createDiceElement('div')
-    createDiceText(dice)
-    assignElementName(div, 'potentialDice')
-    addDiceTextToDiv(div, dice)
-    addListener(div, listener)
+  // Removes event listener from element
+  function removeListener (el, func, boolean) {
+    el.removeEventListener('click', func, boolean)
+  }
+
+  // Removes element from dom
+  function removeElement (el) {
+    el.parentNode.removeChild(el);
+  }
+
+  
+  function holdHandler () {
+
+    removeElement(div)
   }
   // Creates new div, gives it the class name "potential dice", inserts dice value (using dice argument)
-  function results (...dice) {
+  function renderRolls (...dice) {
     let div = document.createElement('div')
     let result = document.createTextNode(dice)
-
-    div.className = 'potentialDice'
-    div.appendChild(result)
-    // Adds listener to created div. Listener creates a listener function that turns dice value in div into an integer and then moves it into the hold array,
-    // then removes itself once clicked and creates div with each held dice and prints it to dom
-    // then adds classlist of "hidden" to hide the elements
+    let currentDiv = document.getElementById('results')
+    assignElementName(div, 'potentialDice')
+    addDiceTextToDiv(div, result)
+    insertElementToDom(div, currentDiv)
     div.addEventListener('click', function listener (e) {
-      const d = parseInt(e.target.innerHTML, 10)
-      let currentDiv = document.getElementById('results')
-      document.body.insertBefore(div, currentDiv)
-      hold.push(d)
-
-      div.removeEventListener('click', listener, true)
-
-      hand.splice(hand.indexOf(hand.find(num => num === d)), 1)
-      document.querySelector('.rr').classList.remove('hidden')
-      div.classList.add('hidden')
+      let d = htmlToInteger(e)
+      insertElementToDom(div, currentDiv)
+      pushToArray(hold, d)
+      removeElement(div)
       holdResults(d)
-      // threesReroll.classList.toggle('hidden')
-    }, true)
+      threesReroll.classList.add('hidden')
+    })
+    // htmlToInteger(div)
+    // addListener(div, pushToArray(hold, htmlToInteger(div)))
   }
 
   function holdResults (...dice) {
@@ -168,6 +168,7 @@ function playThrees () {
 
     let currentDiv = document.getElementById('dice')
     document.body.insertBefore(div, currentDiv)
+    console.log(hold)
   }
   function firstRoll () {
     let d1 = roll()
@@ -176,9 +177,11 @@ function playThrees () {
     let d4 = roll()
     let d5 = roll()
     hand.push(d1, d2, d3, d4, d5)
+    console.log(hand)
 
     for (let i = 0; i < hand.length; i++) {
-      results(hand[i])
+      renderRolls(hand[i])
+      console.log(hand[i])
     }
 
     document.getElementById('threes').classList.add('hidden')

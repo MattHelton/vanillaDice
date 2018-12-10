@@ -126,6 +126,11 @@ function playThrees () {
     el.parentNode.removeChild(el)
   }
 
+  // Applies class to element
+  function toggleHiddenClass (el) {
+    el.classList.toggle('hidden')
+  }
+
   // Creates new div, gives it the class name "potential dice", inserts dice value (using dice argument)
   function renderRolls (...dice) {
     let div = document.createElement('div')
@@ -154,6 +159,10 @@ function playThrees () {
   }
 
   function firstRoll () {
+    let rollForThrees = document.getElementById('threes')
+    let instructions = document.getElementById('instructions')
+    let rolled = document.getElementById('rolled')
+
     for (let i = 0; hand.length < 5; i++) {
       pushToArray(hand, roll())
     }
@@ -162,9 +171,9 @@ function playThrees () {
       renderRolls(hand[i])
     }
 
-    document.getElementById('threes').classList.add('hidden')
-    document.getElementById('instructions').classList.toggle('hidden')
-    document.getElementById('rolled').classList.toggle('hidden')
+    removeElement(rollForThrees)
+    toggleHiddenClass(instructions)
+    toggleHiddenClass(rolled)
   }
   firstRoll()
 

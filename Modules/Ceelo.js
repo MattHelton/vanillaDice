@@ -1,6 +1,7 @@
 // Import
+import { roll, assignElementName, addDiceTextToDiv, insertElementToDom, pushToArray, htmlToInteger, removeElement, toggleHiddenClass } from './Game.js'
 
-function playCeelo () {
+export function playCeelo () {
     function roll () {
       return Math.floor((Math.random() * 6) + 1)
     }

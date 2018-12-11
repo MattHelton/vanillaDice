@@ -40,6 +40,10 @@ export function toggleHiddenClass (el) {
   el.classList.toggle('hidden')
 }
 
+export function removeHiddenClass (el) {
+  el.classList.remove('hidden')
+}
+
 // Applies ID to element
 export function assignElementId (el, name) {
   el.id = name

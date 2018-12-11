@@ -1,5 +1,5 @@
 // Import
-import { roll, assignElementName, assignElementId, addDiceTextToDiv, insertElementToDom, pushToArray, htmlToInteger, removeElement, toggleHiddenClass } from './Game.js'
+import { roll, assignElementName, assignElementId, addDiceTextToDiv, insertElementToDom, pushToArray, htmlToInteger, removeElement, removeHiddenClass, toggleHiddenClass } from './Game.js'
 
 export function playThrees () {
   let hold = []
@@ -22,7 +22,7 @@ export function playThrees () {
       pushToArray(hold, d)
       removeElement(div)
       holdResults(d)
-      toggleHiddenClass(threesReroll)
+      removeHiddenClass(threesReroll)
     })
   }
 
@@ -77,8 +77,15 @@ export function playThrees () {
     toggleHiddenClass(threesReroll)
   })
 
-  // Refactor using imported functions. Any new functions, add to Game module
   function printScore () {
+    let div = document.createElement('div')
+    let holdArray = hold.filter(num => num !== 3)
+    let handArray = hand.filter(num => num !== 3)
+    let holdSum = holdArray.reduce((a, b) => a + b, 0)
+    let handSum = handArray.reduce((a, b) => a + b, 0)
+    let sum = holdSum + handSum
+    let score = document.createTextNode(`Your score is ${sum}`)
+    let currentDiv = document.getElementById('score')
     toggleHiddenClass(scoreButton)
     if (hold.length === 5) {
       let div = document.createElement('div')
@@ -90,14 +97,6 @@ export function playThrees () {
       assignElementId(div, 'score')
       insertElementToDom(div, currentDiv)
     } else {
-      let div = document.createElement('div')
-      let holdArray = hold.filter(num => num !== 3)
-      let handArray = hand.filter(num => num !== 3)
-      let holdSum = holdArray.reduce((a, b) => a + b, 0)
-      let handSum = handArray.reduce((a, b) => a + b, 0)
-      let sum = holdSum + handSum
-      let score = document.createTextNode(`Your score is ${sum}`)
-      let currentDiv = document.getElementById('score')
       addDiceTextToDiv(div, score)
       assignElementId(div, 'score')
       insertElementToDom(div, currentDiv)

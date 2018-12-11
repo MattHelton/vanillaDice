@@ -15,7 +15,7 @@ import {
 export function playCeelo () {
   let hand = []
 
-  function firstRoll () {
+  function ceeloRoll () {
     let rollForCeelo = document.getElementById('ceelo')
     for (let i = 0; hand.length < 3; i++) {
       pushToArray(hand, roll())
@@ -34,7 +34,34 @@ export function playCeelo () {
     addDiceTextToDiv(div, result)
     insertElementToDom(div, currentDiv)
   }
-  firstRoll()
+
+  function renderScore (...dice) {
+    let div = document.createElement('div')
+    let score = document.createTextNode(dice)
+    let currentDiv = document.getElementById('ceeloScore')
+
+    assignElementName(div, 'ceeloScore')
+    addDiceTextToDiv(div, score)
+    insertElementToDom(div, currentDiv)
+  }
+  ceeloRoll()
+
+  if (hand[0] === hand[1] && hand[1] === hand[2]) {
+    renderScore(`Your score is triple ${hand[0]}`)
+  } else if (hand[0] === hand[1] && hand[1] !== hand[2]) {
+    renderScore(`Your score is ${hand[2]}`)
+  } else if (hand[0] === hand[2] && hand[1] !== hand[0]) {
+    renderScore(`Your score is ${hand[1]}`)
+  } else if (hand[1] === hand[2] && hand[0] !== hand[1]) {
+    renderScore(`Your score is ${hand[0]}`)
+  } else if (hand[0] + hand[1] + hand[2] === 6 && hand[0] * hand[1] !== 4) {
+    renderScore('1 2 3! You Lose!')
+  } else if (hand[0] + hand[1] + hand[2] === 15 && hand[0] * hand[1] !== 25) {
+    renderScore('4 5 6! You Win!')
+  } else {
+    // Show reroll button
+    console.log('Roll Again')
+  }
   // let p1 = {
   //   name: 'Player One',
   //   score: 0,

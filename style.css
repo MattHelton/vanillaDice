@@ -78,8 +78,9 @@ div {
     text-align: center
 }
 
-#instructions {
+#instructions, #rolled {
     padding: .5em;
+    font-size: 3em;
     color: #ed6a5a;
     text-align: center
 }

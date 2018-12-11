@@ -40,7 +40,7 @@ body {
 }
 
 .potentialDice {
-    text-align: right
+    text-align: center
 }
 
 .hold {
@@ -72,14 +72,21 @@ div {
     background-color: #f4f1bb
 }
 
-.score {
+#score {
     color: #f4f1bb;
     font-size: 5em;
     text-align: center
 }
 
-#instructions, #rolled {
+#instructions {
     padding: .5em;
     color: #ed6a5a;
     text-align: center
+}
+
+.ceeloRoll {
+    display: inline-block;
+    padding: 1em;
+    color: #f4f1bb;
+    background-color: #ed6a5a
 }

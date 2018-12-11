@@ -30,4 +30,6 @@ rollThrees.addEventListener('click', function () {
 
 reset.addEventListener('click', function () {
   window.location.reload()
+  // Delete unwanted elements (potentialDice, hold, score )
+  // Hide rolled, instructions
 })

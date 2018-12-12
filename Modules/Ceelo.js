@@ -21,7 +21,6 @@ export function playCeelo () {
   nodeListHandler(rolledDice, removeElement)
 
   function ceeloRoll () {
-    let rollForCeelo = document.getElementById('ceelo')
     for (let i = 0; hand.length < 3; i++) {
       pushToArray(hand, roll())
     }
@@ -29,7 +28,6 @@ export function playCeelo () {
       renderRolls(hand[i])
     }
     checkRoll(hand)
-    checkForElement(rollForCeelo, toggleHiddenClass)
   }
 
   function renderRolls (...dice) {
@@ -55,6 +53,7 @@ export function playCeelo () {
 
   function checkRoll (array) {
     let rollForCeelo = document.getElementById('ceelo')
+    toggleHiddenClass(rollForCeelo)
     if (array[0] === array[1] && array[1] === array[2]) {
       renderScore(`Your score is triple ${array[0]}`)
     } else if (array[0] === array[1] && array[1] !== array[2]) {
@@ -70,7 +69,7 @@ export function playCeelo () {
     } else {
     // Show reroll button
       renderScore('Roll Again')
-      checkForElement(rollForCeelo, toggleHiddenClass)
+      toggleHiddenClass(rollForCeelo)
     }
   }
 

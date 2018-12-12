@@ -48,3 +48,10 @@ export function removeHiddenClass (el) {
 export function assignElementId (el, name) {
   el.id = name
 }
+
+export function checkForElement (el, func) {
+  if (!el) {
+  } else {
+    func(el)
+  }
+}

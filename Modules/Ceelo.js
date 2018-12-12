@@ -8,6 +8,7 @@ import {
   insertElementToDom,
   pushToArray,
   removeElement,
+  checkForElement,
   toggleHiddenClass
 } from './Game.js'
 
@@ -23,7 +24,7 @@ export function playCeelo () {
       renderRolls(hand[i])
     }
     checkRoll(hand)
-    checkForElement(rollForCeelo)
+    checkForElement(rollForCeelo, toggleHiddenClass)
   }
 
   function renderRolls (...dice) {
@@ -63,13 +64,6 @@ export function playCeelo () {
     } else {
     // Show reroll button
       console.log('Roll Again')
-    }
-  }
-
-  function checkForElement (el) {
-    if (!el) {
-    } else {
-      toggleHiddenClass(el)
     }
   }
 

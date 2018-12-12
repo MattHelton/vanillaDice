@@ -7,7 +7,6 @@ import {
   addDiceTextToDiv,
   insertElementToDom,
   pushToArray,
-  htmlToInteger,
   removeElement,
   toggleHiddenClass
 } from './Game.js'
@@ -23,6 +22,7 @@ export function playCeelo () {
     for (let i = 0; i < hand.length; i++) {
       renderRolls(hand[i])
     }
+    checkRoll(hand)
   }
 
   function renderRolls (...dice) {
@@ -46,21 +46,23 @@ export function playCeelo () {
   }
   ceeloRoll()
 
-  if (hand[0] === hand[1] && hand[1] === hand[2]) {
-    renderScore(`Your score is triple ${hand[0]}`)
-  } else if (hand[0] === hand[1] && hand[1] !== hand[2]) {
-    renderScore(`Your score is ${hand[2]}`)
-  } else if (hand[0] === hand[2] && hand[1] !== hand[0]) {
-    renderScore(`Your score is ${hand[1]}`)
-  } else if (hand[1] === hand[2] && hand[0] !== hand[1]) {
-    renderScore(`Your score is ${hand[0]}`)
-  } else if (hand[0] + hand[1] + hand[2] === 6 && hand[0] * hand[1] !== 4) {
-    renderScore('1 2 3! You Lose!')
-  } else if (hand[0] + hand[1] + hand[2] === 15 && hand[0] * hand[1] !== 25) {
-    renderScore('4 5 6! You Win!')
-  } else {
+  function checkRoll (array) {
+    if (array[0] === array[1] && array[1] === array[2]) {
+      renderScore(`Your score is triple ${array[0]}`)
+    } else if (array[0] === array[1] && array[1] !== array[2]) {
+      renderScore(`Your score is ${array[2]}`)
+    } else if (array[0] === array[2] && array[1] !== array[0]) {
+      renderScore(`Your score is ${array[1]}`)
+    } else if (array[1] === array[2] && array[0] !== array[1]) {
+      renderScore(`Your score is ${hand[0]}`)
+    } else if (array[0] + array[1] + array[2] === 6 && array[0] * array[1] !== 4) {
+      renderScore('1 2 3! You Lose!')
+    } else if (array[0] + array[1] + array[2] === 15 && array[0] * array[1] !== 25) {
+      renderScore('4 5 6! You Win!')
+    } else {
     // Show reroll button
-    console.log('Roll Again')
+      console.log('Roll Again')
+    }
   }
   // let p1 = {
   //   name: 'Player One',

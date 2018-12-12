@@ -4,6 +4,7 @@
 import {
   roll,
   assignElementName,
+  assignElementId,
   addDiceTextToDiv,
   insertElementToDom,
   pushToArray,
@@ -14,6 +15,10 @@ import {
 
 export function playCeelo () {
   let hand = []
+  let rolledDice = document.querySelectorAll('.ceeloRoll')
+  let scoreDiv = document.getElementById('ceeloScore')
+  checkForElement(scoreDiv, removeElement)
+  nodeListHandler(rolledDice, removeElement)
 
   function ceeloRoll () {
     let rollForCeelo = document.getElementById('ceelo')
@@ -42,13 +47,14 @@ export function playCeelo () {
     let score = document.createTextNode(dice)
     let currentDiv = document.getElementById('ceeloScore')
 
-    assignElementName(div, 'ceeloScore')
+    assignElementId(div, 'ceeloScore')
     addDiceTextToDiv(div, score)
     insertElementToDom(div, currentDiv)
   }
   ceeloRoll()
 
   function checkRoll (array) {
+    let rollForCeelo = document.getElementById('ceelo')
     if (array[0] === array[1] && array[1] === array[2]) {
       renderScore(`Your score is triple ${array[0]}`)
     } else if (array[0] === array[1] && array[1] !== array[2]) {
@@ -63,9 +69,20 @@ export function playCeelo () {
       renderScore('4 5 6! You Win!')
     } else {
     // Show reroll button
-      console.log('Roll Again')
+      renderScore('Roll Again')
+      checkForElement(rollForCeelo, toggleHiddenClass)
     }
   }
+
+  function nodeListHandler (list, func) {
+    if (!list) {
+    } else {
+      for (let i = 0; i < list.length; i++) {
+        func(list[i])
+      }
+    }
+  }
+  // Function to handle node list. could be used to delete previous divs on reroll?
 
   // let p1 = {
   //   name: 'Player One',

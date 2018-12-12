@@ -23,6 +23,7 @@ export function playCeelo () {
       renderRolls(hand[i])
     }
     checkRoll(hand)
+    checkForElement(rollForCeelo)
   }
 
   function renderRolls (...dice) {
@@ -64,6 +65,14 @@ export function playCeelo () {
       console.log('Roll Again')
     }
   }
+
+  function checkForElement (el) {
+    if (!el) {
+    } else {
+      toggleHiddenClass(el)
+    }
+  }
+
   // let p1 = {
   //   name: 'Player One',
   //   score: 0,

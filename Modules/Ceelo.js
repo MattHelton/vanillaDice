@@ -10,7 +10,8 @@ import {
   pushToArray,
   removeElement,
   checkForElement,
-  toggleHiddenClass
+  toggleHiddenClass,
+  nodeListHandler
 } from './Game.js'
 
 export function playCeelo () {
@@ -36,6 +37,7 @@ export function playCeelo () {
     let currentDiv = document.getElementById('ceeloResults')
 
     assignElementName(div, 'ceeloRoll')
+    assignElementName(div, 'currentGame')
     addDiceTextToDiv(div, result)
     insertElementToDom(div, currentDiv)
   }
@@ -46,6 +48,7 @@ export function playCeelo () {
     let currentDiv = document.getElementById('ceeloScore')
 
     assignElementId(div, 'ceeloScore')
+    assignElementName(div, 'currentGame')
     addDiceTextToDiv(div, score)
     insertElementToDom(div, currentDiv)
   }
@@ -73,14 +76,7 @@ export function playCeelo () {
     }
   }
 
-  function nodeListHandler (list, func) {
-    if (!list) {
-    } else {
-      for (let i = 0; i < list.length; i++) {
-        func(list[i])
-      }
-    }
-  }
+  
   // Function to handle node list. could be used to delete previous divs on reroll?
 
   // let p1 = {

@@ -44,6 +44,10 @@ export function removeHiddenClass (el) {
   el.classList.remove('hidden')
 }
 
+export function addHiddenClass (el) {
+  el.classList.add('hidden')
+}
+
 // Applies ID to element
 export function assignElementId (el, name) {
   el.id = name
@@ -53,5 +57,14 @@ export function checkForElement (el, func) {
   if (!el) {
   } else {
     func(el)
+  }
+}
+
+export function nodeListHandler (list, func) {
+  if (!list) {
+  } else {
+    for (let i = 0; i < list.length; i++) {
+      func(list[i])
+    }
   }
 }

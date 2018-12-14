@@ -5,7 +5,8 @@ export function playThrees () {
   let hold = []
   let hand = []
   let scoreButton = document.querySelector('.scoreButton')
-
+  let threesReset = document.getElementById('threesReset')
+  removeHiddenClass(threesReset)
   // Change this to be usable by both games?
   // Pull out event listener to be added to divs somehow only within this game.
   function renderRolls (...dice) {
@@ -14,6 +15,7 @@ export function playThrees () {
     let currentDiv = document.getElementById('threesResults')
 
     assignElementName(div, 'potentialDice')
+    assignElementName(div, 'currentGame')
     addDiceTextToDiv(div, result)
     insertElementToDom(div, currentDiv)
     div.addEventListener('click', function listener (e) {
@@ -31,6 +33,7 @@ export function playThrees () {
     let result = document.createTextNode(dice)
     let currentDiv = document.getElementById('dice')
     assignElementName(div, 'hold')
+    assignElementName(div, 'currentGame')
     addDiceTextToDiv(div, result)
     insertElementToDom(div, currentDiv)
   }

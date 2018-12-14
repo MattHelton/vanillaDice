@@ -11,6 +11,7 @@ import {
   removeElement,
   checkForElement,
   toggleHiddenClass,
+  removeHiddenClass,
   nodeListHandler
 } from './Game.js'
 
@@ -18,6 +19,8 @@ export function playCeelo () {
   let hand = []
   let rolledDice = document.querySelectorAll('.ceeloRoll')
   let scoreDiv = document.getElementById('ceeloScore')
+  let ceeloReset = document.getElementById('ceeloReset')
+  removeHiddenClass(ceeloReset)
   checkForElement(scoreDiv, removeElement)
   nodeListHandler(rolledDice, removeElement)
 

@@ -6,7 +6,8 @@ let ceeloButton = document.getElementById('ceeloButton')
 let rollCeelo = document.getElementById('ceelo')
 let threesButton = document.getElementById('threesButton')
 let rollThrees = document.getElementById('threes')
-let reset = document.getElementById('reset')
+let threesReset = document.getElementById('threesReset')
+let ceeloReset = document.getElementById('ceeloReset')
 
 ceeloButton.addEventListener('click', function () {
   toggleHiddenClass(ceeloButton)
@@ -28,7 +29,15 @@ rollThrees.addEventListener('click', function () {
   playThrees()
 })
 
-reset.addEventListener('click', function () {
+ceeloReset.addEventListener('click', function () {
+  // window.location.reload()
+  // Delete unwanted elements (potentialDice, hold, score )
+  // Hide rolled, instructions
+  let currentGame = document.querySelectorAll('.currentGame')
+  nodeListHandler(currentGame, removeElement)
+})
+
+threesReset.addEventListener('click', function () {
   // window.location.reload()
   // Delete unwanted elements (potentialDice, hold, score )
   // Hide rolled, instructions

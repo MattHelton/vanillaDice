@@ -40,7 +40,7 @@ export function playCeelo () {
     let currentDiv = document.getElementById('ceeloResults')
 
     assignElementName(div, 'ceeloRoll')
-    assignElementName(div, 'currentGame')
+    assignElementName(div, 'ceelo')
     addDiceTextToDiv(div, result)
     insertElementToDom(div, currentDiv)
   }
@@ -51,7 +51,7 @@ export function playCeelo () {
     let currentDiv = document.getElementById('ceeloScore')
 
     assignElementId(div, 'ceeloScore')
-    assignElementName(div, 'currentGame')
+    assignElementName(div, 'ceelo')
     addDiceTextToDiv(div, score)
     insertElementToDom(div, currentDiv)
   }

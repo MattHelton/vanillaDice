@@ -1,6 +1,6 @@
 import { playCeelo } from './Modules/Ceelo.js'
 import { playThrees } from '/Modules/Threes.js'
-import { toggleHiddenClass, removeElement, nodeListHandler, addHiddenClass } from './Modules/Game.js'
+import { toggleHiddenClass, removeElement, nodeListHandler, addHiddenClass, removeHiddenClass } from './Modules/Game.js'
 
 let ceeloButton = document.getElementById('ceeloButton')
 let rollCeelo = document.getElementById('ceelo')
@@ -33,14 +33,18 @@ ceeloReset.addEventListener('click', function () {
   // window.location.reload()
   // Delete unwanted elements (potentialDice, hold, score )
   // Hide rolled, instructions
-  let currentGame = document.querySelectorAll('.currentGame')
-  nodeListHandler(currentGame, removeElement)
+  let ceeloElements = document.querySelectorAll('.ceelo')
+  nodeListHandler(ceeloElements, removeElement)
+  removeHiddenClass(rollCeelo)
+  addHiddenClass(ceeloReset)
 })
 
 threesReset.addEventListener('click', function () {
   // window.location.reload()
   // Delete unwanted elements (potentialDice, hold, score )
   // Hide rolled, instructions
-  let currentGame = document.querySelectorAll('.currentGame')
-  nodeListHandler(currentGame, removeElement)
+  let threesElements = document.querySelectorAll('.threes')
+  nodeListHandler(threesElements, removeElement)
+  removeHiddenClass(rollThrees)
+  addHiddenClass(threesReset)
 })

@@ -52,7 +52,7 @@ export function playThrees () {
       renderRolls(hand[i])
     }
 
-    removeElement(rollForThrees)
+    toggleHiddenClass(rollForThrees)
     toggleHiddenClass(instructions)
     toggleHiddenClass(rolled)
     toggleHiddenClass(scoreButton)

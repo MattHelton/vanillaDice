@@ -72,7 +72,7 @@ div {
     background-color: #f4f1bb
 }
 
-#score {
+#score, #ceeloScore {
     color: #f4f1bb;
     font-size: 5em;
     text-align: center

@@ -34,9 +34,11 @@ ceeloReset.addEventListener('click', function () {
   // Delete unwanted elements (potentialDice, hold, score )
   // Hide rolled, instructions
   let ceeloElements = document.querySelectorAll('.ceelo')
+  let ceeloDice = document.querySelectorAll('.ceeloDice')
   nodeListHandler(ceeloElements, removeElement)
   removeHiddenClass(rollCeelo)
   addHiddenClass(ceeloReset)
+  nodeListHandler(ceeloDice, removeElement)
 })
 
 threesReset.addEventListener('click', function () {

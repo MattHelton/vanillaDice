@@ -17,7 +17,7 @@ import {
 
 export function playCeelo () {
   let hand = []
-  let rolledDice = document.querySelectorAll('.ceeloRoll')
+  let rolledDice = document.querySelectorAll('.ceeloDice')
   let scoreDiv = document.getElementById('ceeloScore')
   let ceeloReset = document.getElementById('ceeloReset')
   removeHiddenClass(ceeloReset)
@@ -39,8 +39,7 @@ export function playCeelo () {
     let result = document.createTextNode(dice)
     let currentDiv = document.getElementById('ceeloResults')
 
-    assignElementName(div, 'ceeloRoll')
-    assignElementName(div, 'ceelo')
+    assignElementName(div, 'ceeloDice')
     addDiceTextToDiv(div, result)
     insertElementToDom(div, currentDiv)
   }

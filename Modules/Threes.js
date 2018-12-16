@@ -1,5 +1,5 @@
 // Import
-import { roll, assignElementName, assignElementId, addDiceTextToDiv, insertElementToDom, pushToArray, htmlToInteger, removeElement, removeHiddenClass, toggleHiddenClass } from './Game.js'
+import { roll, assignElementName, assignElementId, addDiceTextToDiv, insertElementToDom, pushToArray, htmlToInteger, removeElement, removeHiddenClass, toggleHiddenClass, nodeListHandler } from './Game.js'
 
 export function playThrees () {
   let hold = []
@@ -14,8 +14,8 @@ export function playThrees () {
     let result = document.createTextNode(dice)
     let currentDiv = document.getElementById('threesResults')
 
+    // assignElementName(div, 'threes')
     assignElementName(div, 'potentialDice')
-    assignElementName(div, 'currentGame')
     addDiceTextToDiv(div, result)
     insertElementToDom(div, currentDiv)
     div.addEventListener('click', function listener (e) {
@@ -33,7 +33,7 @@ export function playThrees () {
     let result = document.createTextNode(dice)
     let currentDiv = document.getElementById('dice')
     assignElementName(div, 'hold')
-    assignElementName(div, 'currentGame')
+    assignElementName(div, 'threesDice')
     addDiceTextToDiv(div, result)
     insertElementToDom(div, currentDiv)
   }
@@ -62,9 +62,8 @@ export function playThrees () {
   function reroll () {
     let hand = []
     let pd = document.querySelectorAll('.potentialDice')
-    for (let i = 0; i < pd.length; i++) {
-      removeElement(pd[i])
-    }
+    
+    nodeListHandler(pd, removeElement)
     let times = 5 - hold.length
     for (let i = 0; i < times; i++) {
       pushToArray(hand, roll())
@@ -98,10 +97,12 @@ export function playThrees () {
       let scoreText = document.createTextNode(`Your score is ${sum}`)
       addDiceTextToDiv(div, scoreText)
       assignElementId(div, 'score')
+      assignElementName(div, 'threesScore')
       insertElementToDom(div, currentDiv)
     } else {
       addDiceTextToDiv(div, score)
       assignElementId(div, 'score')
+      assignElementName(div, 'threesScore')
       insertElementToDom(div, currentDiv)
     }
   }

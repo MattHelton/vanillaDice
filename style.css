@@ -85,7 +85,7 @@ div {
     text-align: center
 }
 
-.ceeloRoll {
+.ceeloDice, .threes {
     display: inline-block;
     padding: 1em;
     color: #f4f1bb;

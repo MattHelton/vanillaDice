@@ -32,7 +32,10 @@ export function htmlToInteger (e) {
 
 // ****Removes element from dom
 export function removeElement (el) {
-  el.parentNode.removeChild(el)
+  if(!el){
+  } else {
+    el.parentNode.removeChild(el)
+  }
 }
 
 // ****Applies class to element

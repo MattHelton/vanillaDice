@@ -50,6 +50,7 @@ threesReset.addEventListener('click', function () {
   let rolled = document.getElementById('rolled')
   let pd = document.querySelectorAll('.potentialDice')
   let threesDice = document.querySelectorAll('.threesDice')
+  let threesScore = getElementById('threesScore')
   nodeListHandler(threesElements, removeElement)
   removeHiddenClass(rollThrees)
   addHiddenClass(threesReset)
@@ -57,4 +58,5 @@ threesReset.addEventListener('click', function () {
   addHiddenClass(rolled)
   nodeListHandler(pd, removeElement)
   nodeListHandler(threesDice, removeElement)
+  removeElement(threesScore)
 })

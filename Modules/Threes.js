@@ -99,11 +99,13 @@ export function playThrees () {
       assignElementId(div, 'score')
       assignElementName(div, 'threesScore')
       insertElementToDom(div, currentDiv)
+      console.log(sum)
     } else {
       addDiceTextToDiv(div, score)
       assignElementId(div, 'score')
       assignElementName(div, 'threesScore')
       insertElementToDom(div, currentDiv)
+      console.log(sum)
     }
   }
 

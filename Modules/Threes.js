@@ -1,4 +1,3 @@
-// Import
 import { roll, assignElementName, assignElementId, addDiceTextToDiv, insertElementToDom, pushToArray, htmlToInteger, removeElement, removeHiddenClass, toggleHiddenClass, nodeListHandler } from './Game.js'
 
 export function playThrees () {
@@ -7,8 +6,7 @@ export function playThrees () {
   let scoreButton = document.querySelector('.scoreButton')
   let threesReset = document.getElementById('threesReset')
   removeHiddenClass(threesReset)
-  // Change this to be usable by both games?
-  // Pull out event listener to be added to divs somehow only within this game.
+
   function renderRolls (...dice) {
     let div = document.createElement('div')
     let result = document.createTextNode(dice)

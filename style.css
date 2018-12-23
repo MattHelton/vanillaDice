@@ -6,7 +6,7 @@ body {
     background-color: #9bc1bc;
 }
 
-#header {
+#header, #instructions {
     margin: 0em;
     padding: 0em;
     border: 0em;
@@ -78,7 +78,7 @@ div {
     text-align: center
 }
 
-#instructions, #rolled {
+#rolled {
     padding: .5em;
     font-size: 3em;
     color: #ed6a5a;

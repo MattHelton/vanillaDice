@@ -15,7 +15,7 @@ body {
     color: #9bc1bc;
     width: 100vw
 }
-/*  */
+
 .buttonDiv {
     text-align: center
 }
@@ -74,7 +74,7 @@ div {
 
 #score, #ceeloScore {
     color: #f4f1bb;
-    font-size: 5em;
+    font-size: 3em;
     text-align: center
 }
 

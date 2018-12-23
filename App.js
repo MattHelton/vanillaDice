@@ -8,16 +8,15 @@ let threesButton = document.getElementById('threesButton')
 let rollThrees = document.getElementById('threes')
 let threesReset = document.getElementById('threesReset')
 let ceeloReset = document.getElementById('ceeloReset')
+let buttonDiv = document.getElementById('buttonDiv')
 
 ceeloButton.addEventListener('click', function () {
-  toggleHiddenClass(ceeloButton)
-  toggleHiddenClass(threesButton)
+  removeElement(buttonDiv)
   toggleHiddenClass(rollCeelo)
 })
 
 threesButton.addEventListener('click', function () {
-  toggleHiddenClass(threesButton)
-  toggleHiddenClass(ceeloButton)
+  removeElement(buttonDiv)
   toggleHiddenClass(rollThrees)
 })
 

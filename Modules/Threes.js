@@ -3,6 +3,7 @@ import { roll, assignElementName, assignElementId, addDiceTextToDiv, insertEleme
 export function playThrees () {
   let hold = []
   let hand = []
+  let sum = []
   let scoreButton = document.querySelector('.scoreButton')
   let threesReset = document.getElementById('threesReset')
   removeHiddenClass(threesReset)
@@ -83,8 +84,8 @@ export function playThrees () {
     let handArray = hand.filter(num => num !== 3)
     let holdSum = holdArray.reduce((a, b) => a + b, 0)
     let handSum = handArray.reduce((a, b) => a + b, 0)
-    let sum = holdSum + handSum
-    let score = document.createTextNode(`Your score is ${sum}`)
+    let sum2 = holdSum + handSum
+    let score = document.createTextNode(`Your score is ${sum2}`)
     let currentDiv = document.getElementById('score')
     toggleHiddenClass(scoreButton)
     if (hold.length === 5) {
@@ -97,13 +98,11 @@ export function playThrees () {
       assignElementId(div, 'score')
       assignElementName(div, 'threesScore')
       insertElementToDom(div, currentDiv)
-      console.log(sum)
     } else {
       addDiceTextToDiv(div, score)
       assignElementId(div, 'score')
       assignElementName(div, 'threesScore')
       insertElementToDom(div, currentDiv)
-      console.log(sum)
     }
   }
 

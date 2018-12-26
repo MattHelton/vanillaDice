@@ -6,6 +6,7 @@ export function playThrees () {
   let sum = []
   let scoreButton = document.querySelector('.scoreButton')
   let threesReset = document.getElementById('threesReset')
+  
   removeHiddenClass(threesReset)
 
   function renderRolls (...dice) {
@@ -107,4 +108,24 @@ export function playThrees () {
   }
 
   scoreButton.addEventListener('click', printScore)
+  threesReset.addEventListener('click', function () {
+    let pd = document.querySelectorAll('.potentialDice')
+    let rolled = document.getElementById('rolled')
+    let instructions = document.getElementById('instructions')
+    let threesDice = document.querySelectorAll('.threesDice')
+    let threesScore = document.querySelectorAll('.threesScore')
+    let scoreButton = document.querySelector('.scoreButton')
+    let threesRoll = document.getElementById('threes')
+    let rr = document.querySelector('.rr')
+    nodeListHandler(pd, removeElement)
+    addHiddenClass(rolled)
+    addHiddenClass(instructions)
+    nodeListHandler(threesDice, removeElement)
+    nodeListHandler(threesScore, removeElement)
+    removeHiddenClass(rollThrees)
+    addHiddenClass(scoreButton)
+    addHiddenClass(threesReset)
+    removeHiddenClass(threesRoll)
+    addHiddenClass(rr)
+  })
 }

@@ -80,6 +80,10 @@ export function playThrees () {
   })
 
   function printScore () {
+      let holdSum = 0
+      let handSum = 0
+      let sum = 0
+    function getScore () {
     let div = document.createElement('div')
     let holdArray = hold.filter(num => num !== 3)
     let handArray = hand.filter(num => num !== 3)
@@ -106,26 +110,34 @@ export function playThrees () {
       insertElementToDom(div, currentDiv)
     }
   }
+  getScore ()
+  function clearScore (one, two, three) {
+    let one = 0
+      let two = 0
+      let three = 0
+  }
+  clearScore(holdSum, handSum, sum)
+  }
 
   scoreButton.addEventListener('click', printScore)
-  threesReset.addEventListener('click', function () {
-    let pd = document.querySelectorAll('.potentialDice')
-    let rolled = document.getElementById('rolled')
-    let instructions = document.getElementById('instructions')
-    let threesDice = document.querySelectorAll('.threesDice')
-    let threesScore = document.querySelectorAll('.threesScore')
-    let scoreButton = document.querySelector('.scoreButton')
-    let threesRoll = document.getElementById('threes')
-    let rr = document.querySelector('.rr')
-    nodeListHandler(pd, removeElement)
-    addHiddenClass(rolled)
-    addHiddenClass(instructions)
-    nodeListHandler(threesDice, removeElement)
-    nodeListHandler(threesScore, removeElement)
-    removeHiddenClass(rollThrees)
-    addHiddenClass(scoreButton)
-    addHiddenClass(threesReset)
-    removeHiddenClass(threesRoll)
-    addHiddenClass(rr)
-  })
+  // threesReset.addEventListener('click', function () {
+  //   let pd = document.querySelectorAll('.potentialDice')
+  //   let rolled = document.getElementById('rolled')
+  //   let instructions = document.getElementById('instructions')
+  //   let threesDice = document.querySelectorAll('.threesDice')
+  //   let threesScore = document.querySelectorAll('.threesScore')
+  //   let scoreButton = document.querySelector('.scoreButton')
+  //   let threesRoll = document.getElementById('threes')
+  //   let rr = document.querySelector('.rr')
+  //   nodeListHandler(pd, removeElement)
+  //   addHiddenClass(rolled)
+  //   addHiddenClass(instructions)
+  //   nodeListHandler(threesDice, removeElement)
+  //   nodeListHandler(threesScore, removeElement)
+  //   removeHiddenClass(rollThrees)
+  //   addHiddenClass(scoreButton)
+  //   addHiddenClass(threesReset)
+  //   removeHiddenClass(threesRoll)
+  //   addHiddenClass(rr)
+  // })
 }

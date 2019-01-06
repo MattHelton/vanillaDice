@@ -41,10 +41,12 @@ export function toggleHiddenClass (el) {
   el.classList.toggle('hidden')
 }
 
+// Removes 'hidden' class to element
 export function removeHiddenClass (el) {
   el.classList.remove('hidden')
 }
 
+// Adds 'hidden' class to element
 export function addHiddenClass (el) {
   el.classList.add('hidden')
 }
@@ -54,6 +56,7 @@ export function assignElementId (el, name) {
   el.id = name
 }
 
+// Checks to see if element exists?
 export function checkForElement (el, func) {
   if (!el) {
   } else {
@@ -61,6 +64,7 @@ export function checkForElement (el, func) {
   }
 }
 
+// Handles Node List by taking it in and applying the given function to it
 export function nodeListHandler (list, func) {
   if (!list) {
   } else {
@@ -69,3 +73,21 @@ export function nodeListHandler (list, func) {
     }
   }
 }
+
+// Sets array to an empty array
+export function emptyArray (variable) {
+  if (!variable){
+  } else {
+    array = []
+  }
+}
+
+// Sets variable to 0
+export function emptyVariable (variable) {
+  if (!variable) {
+  } else {
+    variable = 0
+  }
+}
+
+

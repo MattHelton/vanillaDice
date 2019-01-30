@@ -1,15 +1,15 @@
 import { roll, assignElementName, assignElementId, addDiceTextToDiv, insertElementToDom, pushToArray, htmlToInteger, removeElement, removeHiddenClass, toggleHiddenClass, nodeListHandler, emptyArray, emptyVariable } from './Game.js'
 
-export function playThrees () {
+export function playThrees() {
   let hold = []
   let hand = []
   let sum = []
   let scoreButton = document.querySelector('.scoreButton')
   let threesReset = document.getElementById('threesReset')
-  
+
   removeHiddenClass(threesReset)
 
-  function renderRolls (...dice) {
+  function renderRolls(...dice) {
     let div = document.createElement('div')
     let result = document.createTextNode(dice)
     let currentDiv = document.getElementById('threesResults')
@@ -18,7 +18,7 @@ export function playThrees () {
     assignElementName(div, 'potentialDice')
     addDiceTextToDiv(div, result)
     insertElementToDom(div, currentDiv)
-    div.addEventListener('click', function listener (e) {
+    div.addEventListener('click', function listener(e) {
       let d = htmlToInteger(e)
       insertElementToDom(div, currentDiv)
       pushToArray(hold, d)
@@ -28,7 +28,7 @@ export function playThrees () {
     })
   }
 
-  function holdResults (...dice) {
+  function holdResults(...dice) {
     let div = document.createElement('div')
     let result = document.createTextNode(dice)
     let currentDiv = document.getElementById('dice')
@@ -38,7 +38,7 @@ export function playThrees () {
     insertElementToDom(div, currentDiv)
   }
 
-  function firstRoll () {
+  function firstRoll() {
     let rollForThrees = document.getElementById('threes')
     let instructions = document.getElementById('instructions')
     let rolled = document.getElementById('rolled')
@@ -59,10 +59,10 @@ export function playThrees () {
   }
   firstRoll()
 
-  function reroll () {
+  function reroll() {
     let hand = []
     let pd = document.querySelectorAll('.potentialDice')
-    
+
     nodeListHandler(pd, removeElement)
     let times = 5 - hold.length
     for (let i = 0; i < times; i++) {
@@ -79,39 +79,43 @@ export function playThrees () {
     toggleHiddenClass(threesReroll)
   })
 
-  function printScore () {
-    function getScore () {
-    let div = document.createElement('div')
-    let holdArray = hold.filter(num => num !== 3)
-    let handArray = hand.filter(num => num !== 3)
-    let holdSum = holdArray.reduce((a, b) => a + b, 0)
-    let handSum = handArray.reduce((a, b) => a + b, 0)
-    let sum2 = holdSum + handSum
-    let score = document.createTextNode(`Your score is ${sum2}`)
-    let currentDiv = document.getElementById('score')
-    toggleHiddenClass(scoreButton)
-    if (hold.length === 5) {
+  function printScore() {
+    function getScore() {
+      let oldScore = document.querySelector('#score')
+      if (oldScore) {
+        oldScore.remove()
+      }
       let div = document.createElement('div')
-      let scoreArray = hold.filter(num => num !== 3)
-      let sum = scoreArray.reduce((a, b) => a + b, 0)
+      let holdArray = hold.filter(num => num !== 3)
+      let handArray = hand.filter(num => num !== 3)
+      let holdSum = holdArray.reduce((a, b) => a + b, 0)
+      let handSum = handArray.reduce((a, b) => a + b, 0)
+      let sum2 = holdSum + handSum
+      let score = document.createTextNode(`Your score is ${sum2}`)
       let currentDiv = document.getElementById('score')
-      let scoreText = document.createTextNode(`Your score is ${sum}`)
-      addDiceTextToDiv(div, scoreText)
-      assignElementId(div, 'score')
-      assignElementName(div, 'threesScore')
-      insertElementToDom(div, currentDiv)
-    } else {
-      addDiceTextToDiv(div, score)
-      assignElementId(div, 'score')
-      assignElementName(div, 'threesScore')
-      insertElementToDom(div, currentDiv)
+      toggleHiddenClass(scoreButton)
+      if (hold.length === 5) {
+        let div = document.createElement('div')
+        let scoreArray = hold.filter(num => num !== 3)
+        let sum = scoreArray.reduce((a, b) => a + b, 0)
+        let currentDiv = document.getElementById('score')
+        let scoreText = document.createTextNode(`Your score is ${sum}`)
+        addDiceTextToDiv(div, scoreText)
+        assignElementId(div, 'score')
+        assignElementName(div, 'threesScore')
+        insertElementToDom(div, currentDiv)
+      } else {
+        addDiceTextToDiv(div, score)
+        assignElementId(div, 'score')
+        assignElementName(div, 'threesScore')
+        insertElementToDom(div, currentDiv)
+      }
+
+
     }
-  
-    
-  }
-  getScore()
-  emptyVariable(sum)
-      emptyVariable(sum2)
+    getScore()
+    emptyVariable(sum)
+    emptyVariable(sum2)
   }
 
   scoreButton.addEventListener('click', printScore)

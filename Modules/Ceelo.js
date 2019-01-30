@@ -50,6 +50,7 @@ export function playCeelo () {
     assignElementName(div, 'ceelo')
     addDiceTextToDiv(div, score)
     insertElementToDom(div, currentDiv)
+    
   }
   ceeloRoll()
 

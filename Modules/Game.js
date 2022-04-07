@@ -75,7 +75,7 @@ export function nodeListHandler(list, func) {
 }
 
 // Sets array to an empty array
-export function emptyArray(variable) {
+export function resetArray(variable) {
   if (!variable) {
   } else {
     array = []

@@ -1,4 +1,4 @@
-import { roll, assignElementName, assignElementId, addDiceTextToDiv, insertElementToDom, pushToArray, htmlToInteger, removeElement, removeHiddenClass, toggleHiddenClass, nodeListHandler, emptyArray, resetVariable } from './Game.js'
+import { roll, assignElementName, assignElementId, addDiceTextToDiv, insertElementToDom, pushToArray, htmlToInteger, removeElement, removeHiddenClass, toggleHiddenClass, nodeListHandler, resetVariable } from './Game.js'
 
 export function playThrees() {
   let hold = []

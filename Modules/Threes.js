@@ -1,4 +1,4 @@
-import { roll, assignElementName, assignElementId, addDiceTextToDiv, insertElementToDom, pushToArray, htmlToInteger, removeElement, removeHiddenClass, toggleHiddenClass, nodeListHandler, emptyArray, emptyVariable } from './Game.js'
+import { roll, assignElementName, assignElementId, addDiceTextToDiv, insertElementToDom, pushToArray, htmlToInteger, removeElement, removeHiddenClass, toggleHiddenClass, nodeListHandler, emptyArray, resetVariable } from './Game.js'
 
 export function playThrees() {
   let hold = []
@@ -80,6 +80,7 @@ export function playThrees() {
   })
 
   function printScore() {
+    let sum2
     function getScore() {
       let oldScore = document.querySelector('#score')
       if (oldScore) {
@@ -90,7 +91,8 @@ export function playThrees() {
       let handArray = hand.filter(num => num !== 3)
       let holdSum = holdArray.reduce((a, b) => a + b, 0)
       let handSum = handArray.reduce((a, b) => a + b, 0)
-      let sum2 = holdSum + handSum
+      sum2 = holdSum + handSum
+      console.log(sum2)
       let score = document.createTextNode(`Your score is ${sum2}`)
       let currentDiv = document.getElementById('score')
       toggleHiddenClass(scoreButton)
@@ -114,8 +116,8 @@ export function playThrees() {
 
     }
     getScore()
-    emptyVariable(sum)
-    emptyVariable(sum2)
+    resetVariable(sum)
+    resetVariable(sum2)
   }
 
   scoreButton.addEventListener('click', printScore)

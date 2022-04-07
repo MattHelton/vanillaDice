@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang='en'>
+
 <head>
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
@@ -7,37 +8,44 @@
     <link rel='stylesheet' type='text/css' href='style.css'>
     <title>Dice Game</title>
 </head>
+
 <body>
     <div id='header'>
-            <h1>Vanilla Dice</h1>
-            <br />
-            <h2 id='choose'>Choose a game</h2>
-            <div class='hidden' id='instructions'><h2>Click on dice to keep. <br />Must choose at least one to roll again</h2></div>
+        <h1>Vanilla Dice</h1>
+        <br />
+        <h2 id='choose'>Choose a game</h2>
+        <div class='hidden' id='instructions'>
+            <h2>Click on dice to keep. <br />Must choose at least one to roll again</h2>
+        </div>
     </div>
-    
+
     <div id='buttonDiv'>
         <button class='button choice c' id='ceeloButton'>Ceelo</button>
         <button class='button choice t' id='threesButton'>Threes</button>
     </div>
     <br />
-    <div class='buttonDiv'>   
-    <button class='button game hidden c' id='ceelo'>Roll for Ceelo!</button>
-    <button class='button game hidden t' id='threes'>Roll for Threes!</button>
-    <button class='button game hidden rr'>Reroll</button>
-    <div class='hidden' id='rolled' ><h3>You rolled</h3></div>
-</div>
+    <div class='buttonDiv'>
+        <button class='button game hidden c' id='ceelo'>Roll for Ceelo!</button>
+        <button class='button game hidden t' id='threes'>Roll for Threes!</button>
+        <button class='button game hidden rr'>Reroll</button>
+        <div class='hidden' id='rolled'>
+            <h3>You rolled</h3>
+        </div>
+    </div>
     <br />
     <div id='ceeloResults'></div>
     <div id='ceeloScore' class='hidden'></div>
     <div id='threesResults'></div>
-   
-    <br /><div class='buttonDiv'>
-            <button class='button scoreButton hidden'>Show score</button>
-            <br />
-            <div></div>
-    <button class ='button hidden' id='threesReset'>Reset game</button>
-    <button class ='button hidden' id='ceeloReset'>Reset game</button>
+
+    <br />
+    <div class='buttonDiv'>
+        <button class='button scoreButton hidden'>Show score</button>
+        <br />
+        <div></div>
+        <button class='button hidden' id='threesReset'>Reset game</button>
+        <button class='button hidden' id='ceeloReset'>Reset game</button>
     </div>
 </body>
 <script type='module' src='App.js'></script>
+
 </html>
